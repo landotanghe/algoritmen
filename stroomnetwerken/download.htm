@@ -1,0 +1,618 @@
+<html>
+<head>
+<title>Jeff Erickson's Algorithms</title>
+</head>
+
+<body bgcolor="white">
+
+<blockquote>
+
+<h1 align=center>Algorithms</h1>
+
+<h2 align=center>by <a href="../../">Jeff Erickson</a><br>
+<small>December 2013 revision</small></h2>
+
+<p>
+This page contains lecture notes for the undergraduate and graduate algorithms classes I have taught at the University of Illinois, Urbana-Champaign.
+<!-- I have taught incarnations of this course fourteen times:
+	Spring 1999, Fall 2000, Spring 2001, Fall 2002, Spring 2004,
+	Fall 2005, Fall 2006, Spring 2007, Fall 2008, Spring 2009,
+	Spring 2010, Fall 2010, Fall 2012, and Fall 2013.-->
+The notes are numbered roughly in the order I use them in undergraduate algorithms classes.  More advanced material is indicated by the symbol <font color=red>&#x2665;</font>.  Each lecture note includes several exercises; a near-complete archive of my old <a href="#hwexams">homeworks, exams, and discussion problems</a> follows the lecture notes on this page.
+
+<p>
+<b>Please do not ask me for solutions to the exercises.</b>  If you're a student, you will (usually) learn more from trying to solve a problem and failing than by reading the answer.  If you really need help, ask your instructor, your TAs, and/or your fellow students.  If you're an instructor, you  shouldn't assign problems that you can't solve yourself!   (Because I don't always follow my own advice, I sometimes assign buggy problems, but I’ve tried to keep these out of the lecture notes themselves.)
+
+<p>
+<a href="#about">More information about this material</a> is available at the bottom of this  page.  Many other recommended algorithms resources, both online and off, including course materials, videos, MOOCs, and even a few dead-tree textbooks, are listed on <a href="resources.html">a separate page</a>.
+
+<p>
+Feedback is always welcome, especially bug reports.  I would particularly appreciate hearing from anyone outside UIUC who finds this stuff useful (or useless)!
+
+
+<p align=center><small>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type"><i>Algorithms</i></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.cs.illinois.edu/~jeffe/teaching/algorithms/" property="cc:attributionName" rel="cc:attributionURL">Jeff Erickson</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+</small>
+
+<hr>
+
+<table width=50% bgcolor=lightyellow align=right cellspacing=5>
+<tr><td align=left><font face=verdana,sans size=-1>
+<i>You know, I could write a book.
+<br>And this book would be thick enough to stun an ox.</i></font>
+<tr><td align=right><font face=verdana,sans size=-1>
+&mdash; Laurie Anderson, "Let X=X", <cite>Big Science</cite> (1982)
+</font></td></tr></table>
+
+<blockquote>
+
+<h3>Everything</h3>
+
+<ul>
+<li><a href="everything.pdf"><b>Everything in one file</b></a> (983 pages)
+<p>
+<li><a href="notes/0-cover.pdf">Cover material</a> (7 pages)
+<li><a href="notes/all-notes.pdf">All lecture notes in one file</a> (451 pages)
+<li><a href="hwex/all-hwex.pdf">All homework, head-banging, and exam problems in one file</a> (532 pages)
+</ul>
+
+</blockquote>
+
+<hr>
+
+
+<table width=50% bgcolor=lightyellow align=right cellspacing=5>
+<tr><td align=left><font face=verdana,sans size=-1>
+<i>If we are ready to tolerate everything as understood, there is nothing left to explain; while if we sourly refuse to take anything, even tentatively, as clear, no explanation can be given. What intrigues us as a problem, and what will satisfy us as a solution, will depend upon the line we draw between what is already clear and what needs to be clarified.
+</i></font>
+<tr><td align=right><font face=verdana,sans size=-1>
+&mdash; Nelson Goodman, <cite>Fact, Fiction &amp; Forecast</cite> (1955)
+</font></td></tr></table>
+
+<blockquote>
+
+<h3> Lecture Notes </h3>
+<ul>
+<p>
+<li>0. <a href="notes/00-intro.pdf">Introduction, history, and course goals</a>
+
+<li> <b>Recursion</b>
+<ul>
+<li>1. <a href="notes/01-recursion.pdf">Simplify and delegate</a> 
+<li>2. <a href="notes/02-fft.pdf">Fast Fourier transforms</a>
+		<font color=red>&#x2665;</font>
+<li>3. <a href="notes/03-backtracking.pdf">Backtracking</a>
+<li>4. <a href="notes/04-fastexpo.pdf">Fast exponential-time algorithms</a>
+		<font color=red>&#x2665;</font>
+<li>5. <a href="notes/05-dynprog.pdf">Dynamic programming</a>
+<li>6. <a href="notes/06-sparsedynprog.pdf">Advanced dynamic programming tricks</a>
+		<font color=red>&#x2665;</font>
+<li>7. <a href="notes/07-greedy.pdf">Greedy algorithms</a>
+<li>8. <a href="notes/08-matroids.pdf">Matroids</a>
+		<font color=red>&#x2665;</font>
+</ul>
+
+<li> <b>Randomization</b>
+<ul>
+<li>9. <a href="notes/09-nutsbolts.pdf">Nuts and bolts</a> (randomized quicksort)
+<li>10. <a href="notes/10-treaps.pdf">Treaps and skip lists</a>
+<li>11. <a href="notes/11-chernoff.pdf">Tail inequalities</a>
+			<font color=red>&#x2665;</font>
+<li>12. <a href="notes/12-hashing.pdf">Hashing</a>
+<li>13. <a href="notes/13-strings.pdf">String matching</a>
+<li>14. <a href="notes/14-mincut.pdf">Randomized minimum cut</a>
+</ul>
+<li> <b>Amortization</b>
+<ul>
+<li>15. <a href="notes/15-amortize.pdf">Aggregation, taxation, potential</a>
+<li>16. <a href="notes/16-scapegoat+splay.pdf">Scapegoat trees and splay trees</a>
+<li>17. <a href="notes/17-unionfind.pdf">Maintaining disjoint sets ("union-find")</a>
+	&mdash; includes O(&alpha;(n)) amortized analysis <font color=red>&#x2665;</font>
+</ul>
+<!--
+<li> <b>String algorithms</b>
+<ul>
+<li>G. <a href="notes/10g-fingerprint.pdf">Brute force, fingerprinting</a>
+<li>H. <a href="notes/10h-kmp.pdf">Knuth-Morris-Pratt</a>
+</ul>
+-->
+<li> <b>Basic graph algorithms</b>
+<ul>
+<li>18. <a href="notes/18-graphs.pdf">Representations, traversal</a>
+<li>19. <a href="notes/19-dfs.pdf">Depth-first search, topological sort</a>
+<li>20. <a href="notes/20-mst.pdf">Minimum spanning trees</a>
+<li>21. <a href="notes/21-sssp.pdf">Single-source shortest paths</a>
+<li>22. <a href="notes/22-apsp.pdf">All-pairs shortest paths</a>
+</ul>
+<li> <b>Combinatorial optimization</b>
+<ul>
+<li>23. <a href="notes/23-maxflow.pdf">Maximum flows and minimum cuts</a>
+<li>24. <a href="notes/24-maxflowapps.pdf">Applications of maximum flow</a>
+<li>25. <a href="notes/25-maxflowext.pdf">Extensions of maximum flow</a>
+			<font color=red>&#x2665;</font>
+<li>26. <a href="notes/26-lp.pdf">Linear programming</a>
+			<font color=red>&#x2665;</font>
+<li>27. <a href="notes/27-simplex.pdf">The simplex algorithm</a>
+			<font color=red>&#x2665;</font>
+</ul>
+<li> <b>Lower bounds</b>
+<ul>
+<li>28. <a href="notes/28-lowerbounds.pdf">Decision trees, leaf counting</a>
+<li>29. <a href="notes/29-adversary.pdf">Adversary arguments ("n-card monte")</a>
+<li>30. <a href="notes/30-nphard.pdf">NP-hardness</a>
+<li>31. <a href="notes/31-approx.pdf">Approximation algorithms</a>
+</ul>
+<li>  <b>Appendix</b>
+<ul>
+<li> I. <a href="notes/98-induction.pdf">Induction proofs</a>
+<li> II. <a href="notes/99-recurrences.pdf">Solving recurrences</a>
+</ul>
+<!--
+<li>  <b>Retired:</b> These notes contain material that I have not covered in several years, and that I do not expect to cover in the future.
+<ul>
+<li> L. <a href="notes/xl-fiboheap.pdf">Fibonacci heaps</a>
+<li> M. <a href="notes/xm-number.pdf">Number-theoretic algorithms</a>
+<li> N. <a href="notes/xn-convexhull.pdf">Convex hulls</a>
+<li> O. <a href="notes/xo-sweepline.pdf">Sweepline algorithms</a>
+<li> P. <a href="notes/xp-polytri.pdf">Polygon triangulation</a>
+<li> Q. <a href="notes/xq-reductions.pdf">Lower bound reductions</a>
+</ul>
+</ul>
+-->
+
+</blockquote>
+<hr>
+
+<table width=50% bgcolor=lightyellow align=right cellpadding=5>
+<tr><td align=left><font face=verdana,sans size=-1>
+<i>The problem is that we attempt to solve the simplest questions cleverly, thereby rendering them unusually complex.
+<br>
+One should seek the simple solution.</i>
+<tr><td align=right><font face=verdana,sans size=-1>
+&mdash; Anton Pavlovich Chekhov (c. 1890)
+</font></td></tr></table>
+
+<blockquote>
+
+<h3> Homeworks, Exams, and Head-Banging Sessions </h3>
+
+<ul>
+<li> <a href="../pikachu.html">Johnny's algorithms homework</a> (Fall 2000 HW 1)
+<p>
+<li> Spring 1999 (mixed): <a href="hwex/s99-hwex.pdf">everything</a>
+<ul>
+<li>Homework:
+<a href="hwex/s99/hw0.pdf">hw0</a>,
+<a href="hwex/s99/hw1.pdf">hw1</a>,
+<a href="hwex/s99/hw2.pdf">hw2</a>,
+<a href="hwex/s99/hw3.pdf">hw3</a>,
+<a href="hwex/s99/hw4.pdf">hw4</a>,
+<a href="hwex/s99/hw5.pdf">hw5</a>
+<li>Exams:
+<a href="hwex/s99/mt1.pdf">midterm 1</a>,
+<a href="hwex/s99/mt2.pdf">midterm 2</a>,
+<a href="hwex/s99/final.pdf">final</a>
+</ul>
+
+<li> Fall 2000 (mixed): <a href="hwex/f00-hwex.pdf">everything</a>
+<ul>
+<li>Homework:
+<a href="hwex/f00/hw0.pdf">hw0</a>,
+<a href="hwex/f00/hw1.pdf">hw1</a>,
+<a href="hwex/f00/hw2.pdf">hw2</a>,
+<a href="hwex/f00/hw3.pdf">hw3</a>,
+<a href="hwex/f00/hw4.pdf">hw4</a>,
+<a href="hwex/f00/hw5.pdf">hw5</a>,
+<a href="hwex/f00/hw6.pdf">hw6</a>
+<li>Exams:
+<a href="hwex/f00/mt1.pdf">midterm 1</a>,
+<a href="hwex/f00/mt2.pdf">midterm 2</a>,
+<a href="hwex/f00/final.pdf">final</a>
+</ul>
+
+<li> Spring 2001 (mixed): <a href="hwex/s01-hwex.pdf">everything</a>
+<ul>
+<li>Homework:
+<a href="hwex/s01/hw0.pdf">hw0</a>,
+<a href="hwex/s01/hw1.pdf">hw1</a>,
+<a href="hwex/s01/hw2.pdf">hw2</a>,
+<a href="hwex/s01/hw3.pdf">hw3</a>,
+<a href="hwex/s01/hw4.pdf">hw4</a>,
+<a href="hwex/s01/hw5.pdf">hw5</a>,
+<a href="hwex/s01/hw6.pdf">hw6</a>
+<li>Exams:
+<a href="hwex/s01/mt1.pdf">midterm 1</a>,
+<a href="hwex/s01/mt2.pdf">midterm 2</a>,
+<a href="hwex/s01/final.pdf">final</a>
+</ul>
+
+<li> Fall 2002 (mixed): <a href="hwex/f02-hwex.pdf">everything</a>
+<ul>
+<li>Homework:
+<a href="hwex/f02/hw0.pdf">hw0</a>,
+<a href="hwex/f02/hw1.pdf">hw1</a>,
+<a href="hwex/f02/hw2.pdf">hw2</a>,
+<a href="hwex/f02/hw3.pdf">hw3</a>,
+<a href="hwex/f02/hw4.pdf">hw4</a>,
+<a href="hwex/f02/hw5.pdf">hw5</a>,
+<a href="hwex/f02/hw6.pdf">hw6</a>
+<li>Exams:
+<a href="hwex/f02/mt1.pdf">midterm 1</a>,
+<a href="hwex/f02/mt2.pdf">midterm 2</a>,
+<a href="hwex/f02/final.pdf">final</a>
+</ul>
+
+<li>Spring 2004 (undergraduate): <a href="hwex/s04-hwex.pdf">everything</a>
+<ul>
+<li>Homework:
+<a href="hwex/s04/hw0.pdf">hw0</a>,
+<a href="hwex/s04/hw1.pdf">hw1</a>,
+<a href="hwex/s04/hw2.pdf">hw2</a>,
+<a href="hwex/s04/hw3.pdf">hw3</a>,
+<a href="hwex/s04/hw4.pdf">hw4</a>,
+<a href="hwex/s04/hw5.pdf">hw5</a>,
+<a href="hwex/s04/hw6.pdf">hw6</a>
+<li>Exams:
+<a href="hwex/s04/mt1.pdf">midterm 1</a>,
+<a href="hwex/s04/mt1c.pdf">conflict midterm 1</a>,
+<a href="hwex/s04/mt2.pdf">midterm 2</a>,
+<a href="hwex/s04/final.pdf">final</a>,
+<a href="hwex/s04/finalc.pdf">conflict final</a>
+</ul>
+
+<li>Fall 2005 (graduate): <a href="hwex/f05-hwex.pdf">everything</a>
+<ul>
+<li>Homework:
+<a href="hwex/f05/hw0.pdf">hw0</a>,
+<a href="hwex/f05/hw1.pdf">hw1</a>,
+<a href="hwex/f05/hw2.pdf">hw2</a>,
+<a href="hwex/f05/hw3.pdf">hw3</a>,
+<a href="hwex/f05/hw4.pdf">hw4</a>,
+<a href="hwex/f05/hw5.pdf">hw5</a>,
+<a href="hwex/f05/hw6.pdf">hw6</a>
+<li>Exams:
+<a href="hwex/f05/mt1.pdf">midterm 1</a>,
+<a href="hwex/f05/mt2.pdf">midterm 2</a>,
+<a href="hwex/f05/final.pdf">final</a>
+</ul>
+
+<li>Fall 2006 (undergraduate): <a href="hwex/f06-hwex.pdf">everything</a>
+<ul>
+<li>
+Homework:
+<a href="hwex/f06/hw0.pdf">hw0</a>,
+<a href="hwex/f06/hw1.pdf">hw1</a>,
+<a href="hwex/f06/hw2.pdf">hw2</a>,
+<a href="hwex/f06/hw3.pdf">hw3</a>,
+<a href="hwex/f06/hw4.pdf">hw4</a>,
+<a href="hwex/f06/hw5.pdf">hw5</a>,
+<a href="hwex/f06/hw6.pdf">hw6</a>,
+<a href="hwex/f06/hw7.pdf">hw7</a>,
+<a href="hwex/f06/hw8.pdf">hw8</a>
+<li>
+Head-banging:
+<a href="hwex/f06/hbs0.pdf">hbs0</a>,
+<a href="hwex/f06/hbs1.pdf">hbs1</a>,
+<a href="hwex/f06/hbs2.pdf">hbs2</a>,
+<a href="hwex/f06/hbs3.pdf">hbs3</a>,
+<a href="hwex/f06/hbs4.pdf">hbs4</a>,
+<a href="hwex/f06/hbs5.pdf">hbs5</a>,
+<a href="hwex/f06/hbs6.pdf">hbs6</a>,
+<a href="hwex/f06/hbs7.pdf">hbs7</a>,
+<a href="hwex/f06/hbs8.pdf">hbs8</a>,
+<a href="hwex/f06/hbs9.pdf">hbs9</a>,
+<a href="hwex/f06/hbs10.pdf">hbs10</a>,
+<a href="hwex/f06/hbs11.pdf">hbs11</a>,
+<a href="hwex/f06/hbs12.pdf">hbs12</a>,
+<a href="hwex/f06/hbs13.pdf">hbs13</a>
+<li>
+Exams:
+<a href="hwex/f06/mt1.pdf">midterm 1</a>,
+<a href="hwex/f06/mt2.pdf">midterm 2</a>,
+<a href="hwex/f06/final.pdf">final</a>
+</ul>
+
+<li>Spring 2007 (graduate): <a href="hwex/s07-hwex.pdf">everything</a>
+<ul>
+<li>Homework:
+<a href="hwex/s07/hw0.pdf">hw0</a>,
+<a href="hwex/s07/hw1.pdf">hw1</a>,
+<a href="hwex/s07/hw2.pdf">hw2</a>,
+<a href="hwex/s07/hw3.pdf">hw3</a>,
+<a href="hwex/s07/hw4.pdf">hw4</a>,
+<a href="hwex/s07/hw5.pdf">hw5</a>
+<li>Exams:
+<a href="hwex/s07/mt1.pdf">midterm 1</a>,
+<a href="hwex/s07/mt2.pdf">midterm 2</a>,
+<a href="hwex/s07/final.pdf">final</a>
+</ul>
+
+<li>Fall 2008 (graduate): <a href="hwex/f08-hwex.pdf">everything</a>
+<ul>
+<li>Homework:
+<a href="hwex/f08/hw0.pdf">hw0</a>,
+<a href="hwex/f08/hw1.pdf">hw1</a>,
+<a href="hwex/f08/hw2.pdf">hw2</a>,
+<a href="hwex/f08/hw3.pdf">hw3</a>,
+<a href="hwex/f08/hw4.pdf">hw4</a>,
+<a href="hwex/f08/hw5.pdf">hw5</a>,
+<a href="hwex/f08/hw6.pdf">hw6</a>
+<li>Exams:
+<a href="hwex/f08/midterm.pdf">midterm 1</a>,
+<a href="hwex/f08/midterm2.pdf">midterm 2</a>,
+<a href="hwex/f08/final.pdf">final</a>
+</ul>
+
+<li>Spring 2009 (undergraduate): <a href="hwex/s09-hwex.pdf">everything</a>
+<ul>
+<li>
+Homework:
+<a href="hwex/s09/hw0.pdf">hw0</a>,
+<a href="hwex/s09/hw1.pdf">hw1</a>,
+<a href="hwex/s09/hw2.pdf">hw2</a>,
+<a href="hwex/s09/hw3.pdf">hw3</a>,
+<a href="hwex/s09/hw3bis.pdf">hw3&frac12;</a>,
+<a href="hwex/s09/hw4.pdf">hw4</a>,
+<a href="hwex/s09/hw5.pdf">hw5</a>,
+<a href="hwex/s09/hw6.pdf">hw6</a>,
+<a href="hwex/s09/hw6bis.pdf">hw6&frac12;</a>,
+<a href="hwex/s09/hw6ter.pdf">hw6&frac34;</a>,
+<a href="hwex/s09/hw7.pdf">hw7</a>,
+<a href="hwex/s09/hw8.pdf">hw8</a>,
+<a href="hwex/s09/hw9.pdf">hw9</a>,
+<a href="hwex/s09/hw10.pdf">hw10</a>
+<li>
+Head-banging:
+<a href="hwex/s09/hbs0.pdf">hbs0</a>,
+<a href="hwex/s09/hbs1.pdf">hbs1</a>,
+<a href="hwex/s09/hbs2.pdf">hbs2</a>,
+<a href="hwex/s09/hbs3.pdf">hbs3</a>,
+<a href="hwex/s09/hbs3bis.pdf">hbs3&frac12;</a>,
+<a href="hwex/s09/hbs4.pdf">hbs4</a>,
+<a href="hwex/s09/hbs5.pdf">hbs5</a>,
+<a href="hwex/s09/hbs6.pdf">hbs6</a>,
+<a href="hwex/s09/hbs6bis.pdf">hbs6&frac12;</a>,
+<a href="hwex/s09/hbs6ter.pdf">hbs6&frac34;</a>,
+<a href="hwex/s09/hbs7.pdf">hbs7</a>,
+<a href="hwex/s09/hbs8.pdf">hbs8</a>,
+<a href="hwex/s09/hbs9.pdf">hbs9</a>,
+<a href="hwex/s09/hbs10.pdf">hbs10</a>,
+<a href="hwex/s09/hbs11.pdf">hbs11</a>
+<li>
+Exams:
+<a href="hwex/s09/midterm1.pdf">midterm 1</a>,
+<a href="hwex/s09/midterm2.pdf">midterm 2</a>,
+<a href="hwex/s09/final.pdf">final</a>
+</ul>
+
+
+<li>Spring 2010 (undergraduate): <a href="hwex/s10-hwex.pdf">everything</a>
+<ul>
+<li>
+Homework:
+<a href="hwex/s10/hw0.pdf">hw0</a>,
+<a href="hwex/s10/hw1.pdf">hw1</a>,
+<a href="hwex/s10/hw2.pdf">hw2</a>,
+<a href="hwex/s10/hw3.pdf">hw3</a>,
+<a href="hwex/s10/hw4.pdf">hw4</a>,
+<a href="hwex/s10/hw5.pdf">hw5</a>,
+<a href="hwex/s10/hw6.pdf">hw6</a>,
+<a href="hwex/s10/hw7.pdf">hw7</a>,
+<a href="hwex/s10/hw8.pdf">hw8</a>,
+<a href="hwex/s10/hw9.pdf">hw9</a>,
+<a href="hwex/s10/hw10.pdf">hw10</a>
+<li>
+Head-banging: <i>Missing, sorry.</i>
+<li>
+Exams:
+<a href="hwex/s10/midterm1.pdf">midterm 1</a>,
+<a href="hwex/s10/midterm2.pdf">midterm 2</a>,
+<a href="hwex/s10/final.pdf">final</a>
+</ul>
+
+
+<li>Fall 2010 (graduate): <a href="hwex/f10-hwex.pdf">everything</a>
+<ul>
+<li>
+Homework:
+<a href="hwex/f10/hw0.pdf">hw0</a>,
+<a href="hwex/f10/hw1.pdf">hw1</a>,
+<a href="hwex/f10/hw2.pdf">hw2</a>,
+<a href="hwex/f10/hw3.pdf">hw3</a>,
+<a href="hwex/f10/hw4.pdf">hw4</a>,
+<a href="hwex/f10/hw5.pdf">hw5</a>,
+<a href="hwex/f10/hw6.pdf">hw6</a>,
+<li>
+Exams:
+<a href="hwex/f10/midterm1.pdf">midterm 1</a>,
+<a href="hwex/f10/midterm2.pdf">midterm 2</a>,
+<a href="hwex/f10/final.pdf">final</a>
+</ul>
+
+<li>Fall 2012 (undergraduate):
+<ul>
+<li>
+Homework:
+<a href="hwex/f12/hw0.pdf">hw0</a>,
+<a href="hwex/f12/hw1.pdf">hw1</a>,
+<a href="hwex/f12/hw2.pdf">hw2</a>,
+<a href="hwex/f12/hw3.pdf">hw3</a>,
+<a href="hwex/f12/hw4.pdf">hw4</a>,
+<a href="hwex/f12/hw5.pdf">hw5</a>,
+<a href="hwex/f12/hw6.pdf">hw6</a>,
+<a href="hwex/f12/hw7.pdf">hw7</a>,
+<a href="hwex/f12/hw8.pdf">hw8</a>,
+<a href="hwex/f12/hw9.pdf">hw9</a>,
+<a href="hwex/f12/hw10.pdf">hw10</a>
+<li>
+Head-banging:
+<a href="hwex/f12/bang0.pdf">bang0</a>,
+<a href="hwex/f12/bang1.pdf">bang1</a>,
+<a href="hwex/f12/bang2.pdf">bang2</a>,
+<a href="hwex/f12/bang3.pdf">bang3</a>,
+<a href="hwex/f12/bang4.pdf">bang4</a>,
+<a href="hwex/f12/bang5.pdf">bang5</a>,
+<a href="hwex/f12/bang6.pdf">bang6</a>,
+<a href="hwex/f12/bang7.pdf">bang7</a>,
+<a href="hwex/f12/bang8.pdf">bang8</a>,
+<a href="hwex/f12/bang9.pdf">bang9</a>,
+<a href="hwex/f12/bang10.pdf">bang10</a>,
+<a href="hwex/f12/bang11.pdf">bang11</a>,
+<a href="hwex/f12/bang12.pdf">bang12</a>,
+<a href="hwex/f12/bang13.pdf">bang13</a>
+<li>
+Exams:
+<a href="hwex/f12/midterm1.pdf">midterm 1</a>,
+<a href="hwex/f12/midterm2.pdf">midterm 2</a>,
+<a href="hwex/f12/final.pdf">final</a>,
+<a href="hwex/f12/finalC.pdf">conflict final</a>,
+<a href="hwex/f12/finalM.pdf">makeup final</a>
+</ul>
+
+
+<li>Fall 2013 (undergraduate):
+<ul>
+<li>
+Homework:
+<a href="hwex/f13/hw0.pdf">hw0</a>,
+<a href="hwex/f13/hw1.pdf">hw1</a>,
+<a href="hwex/f13/hw2.pdf">hw2</a>,
+<a href="hwex/f13/hw3.pdf">hw3</a>,
+<a href="hwex/f13/hw4.pdf">hw4</a>,
+<a href="hwex/f13/hw5.pdf">hw5</a>,
+<a href="hwex/f13/hw6.pdf">hw6</a>,
+<a href="hwex/f13/hw7.pdf">hw7</a>,
+<a href="hwex/f13/hw8.pdf">hw8</a>,
+<a href="hwex/f13/hw9.pdf">hw9</a>,
+<a href="hwex/f13/hw10.pdf">hw10</a>
+<li>
+Head-banging:
+<a href="hwex/f13/bang0.pdf">bang0</a>,
+<a href="hwex/f13/bang1.pdf">bang1</a>,
+<a href="hwex/f13/bang2.pdf">bang2</a>,
+<a href="hwex/f13/bang3.pdf">bang3</a>,
+<a href="hwex/f13/bang4.pdf">bang4</a>,
+<a href="hwex/f13/bang5.pdf">bang5</a>,
+<a href="hwex/f13/bang6.pdf">bang6</a>,
+<a href="hwex/f13/bang7.pdf">bang7</a>,
+<a href="hwex/f13/bang8.pdf">bang8</a>,
+<a href="hwex/f13/bang9.pdf">bang9</a>,
+<a href="hwex/f13/bang10.pdf">bang10</a>,
+<a href="hwex/f13/bang11.pdf">bang11</a>,
+<a href="hwex/f13/bang12.pdf">bang12</a>,
+<a href="hwex/f13/bang13.pdf">bang13</a>
+<li>
+Exams:
+<a href="hwex/f13/midterm1.pdf">midterm 1</a>,
+<a href="hwex/f13/midterm1C.pdf">conflict midterm 1</a>,
+<a href="hwex/f13/midterm2.pdf">midterm 2</a>,
+<a href="hwex/f13/final.pdf">final</a>,
+<a href="hwex/f13/finalC.pdf">conflict final</a>
+</ul>
+
+</ul>
+
+
+</blockquote>
+<hr>
+
+
+<table width=50% bgcolor=lightyellow align=right cellspacing=5>
+<tr><td align=left><font face=verdana,sans size=-1>
+<i>
+Knowledge is of two kinds.
+<br>
+We know a subject ourselves,
+<br>
+or we know where we can find information upon it.
+</i></font>
+<tr><td align=right><font face=verdana,sans size=-1>
+&mdash; Samuel Johnson (April 18, 1775)<br>
+quoted by James Boswell, <cite><a href="http://www.gutenberg.org/files/1564/1564-h/1564-h.htm#link2H_4_0003">The Life of Samuel Johnson, LL.D.</a></cite> (1791)
+</font></td></tr></table>
+
+<blockquote align=justify>
+<h3><a name="about">More Information</a></h3>
+
+<br clear=all>
+<p><b>Copyright.</b>
+Except as indicated otherwise, all material linked from this web page is Copyright &copy; 1999&ndash;2013 <a href="http://www.cs.uiuc.edu/~jeffe">Jeff Erickson</a>.  Anyone may freely download, print, copy, and/or distribute anything on this page, either electronically or on paper.  However, nothing on this page may be <em>sold</em> in any form for more than the actual cost of reproduction or distribution.  For example, you are welcome to maintain local copies on your own web server, but you are not allowed to require an access fee (such as tuition) to view your local copy; that's the same as selling it.  If you distribute these notes, please give me proper credit and please include a link to <a href="http://www.cs.uiuc.edu/~jeffe/teaching/algorithms">this web page (http://<wbr>www.cs.uiuc.edu/<wbr>~jeffe/<wbr>teaching/<wbr>algorithms)</a>.  If you're a lawyer, read the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">legalese</a>.
+
+<p>
+<b>Teaching assistants.</b>  I am deeply indebted to my fantastic teaching assistants, without whom running effective courses would be utterly impossible.  In particular, these TAs contributed a significant fraction of the homework and discussion problems.
+<blockquote>
+Aditya Ramani,
+Akash Gautam,
+Alina Ene,
+Amir Nayyeri,
+Asha Seetharam,
+Ashish Vulimiri,
+Ben Moseley,
+Brian Ensink,
+Chris Neihengen,
+Dan Bullok,
+Dan Cranston,
+Daniel Khashabi,
+David Morrison,
+Johnathon Fischer,
+Ekta Manaktala,
+Erin Wolf Chambers,
+Hsien-Chih Chang,
+Igor Gammer, 
+Gio Kao,
+Kent Quanrud,
+Kevin Milans,
+Kevin Small,
+Kyle Fox,
+Kyle Jao,
+Lan Chen,
+Michael Bond,
+Mitch Harris,
+Nick Hurlburt,
+Nirman Kumar,
+Nitish Korula,
+Rachit Agarwal,
+Reza Zamani-Nasab,
+Rishi Talreja,
+Rob McCann,
+Shripad Thite,
+Subhro Roy, and
+Yasu Furakawa.
+</blockquote>
+
+<p>
+<b>Figure credits.</b>
+The picture of the Sprit of Arithmetic from <cite>Margarita Philosophica</cite> at the end of the <a href="notes/00-intro.pdf">introductory notes</a> was copied from <a href="https://commons.wikimedia.org/wiki/File:Gregor_Reisch,_Margarita_Philosophica,_1508_(1230x1615).png">Wikimedia Commons</a>; the original 1508 woodcut is in the public domain.
+The map on the first page of the <a href="notes/23-maxflow.pdf">maxflow/mincut notes</a> was copied from <a href="http://homepages.cwi.nl/~lex/">Lex Schrijver</a>'s excellent survey <a href="http://homepages.cwi.nl/~lex/files/histco.pdf">"On the history of combinatorial optimization (till 1960)"</a>; the original map is from a US Government work in the public domain.  Several of Randall Munroe's <a href="http://xkcd.com/">xkcd</a> comic strips are reproduced under a <a href="http://xkcd.com/license.html">Creative Commons License</a>.  One <a href="http://memegenerator.net/X-All-The-Things">well-known</a> frame from Allie Brosh's comic strip <a href="http://hyperboleandahalf.blogspot.com/2010/06/this-is-why-ill-never-be-adult.html"><cite>Hyperbole and a Half</cite></a> appears in two of these notes <em>without</em> explicit permission.  <a href="../pikachu.html">Johnny's algorithm homework</a> was submitted by an anonymous student.  I drew all other figures in the notes myself, mostly using <a href="http://www.omnigroup.com/omnigraffle">OmniGraffle</a>, but some earlier figures using (shudder) xfig.
+
+<p>
+<b>Previous versions.</b>
+The <a href="2009/">2009</a> and <a href="2011/">2011</a> editions of this material are still available; these include a few "retired" notes on material I have not taught for several years.  More recent revisions are probably available on the official web site of whatever algorithms course I'm teaching this semester. Some day I will join the 20th century and use a real source-control repository.
+
+<p>
+<b>Caveat Lector.</b>
+Some of these lecture notes have been used less often than others and are therefore (sometimes <em>considerably</em>) less complete/<wbr>polished.  I offer extra credit to my own students for finding bugs in the notes, and I strongly encourage anyone else using them to do the same.  <b><em>Please send me bug reports.</em></b>  Also, each of these notes contains significantly more than one lecture's worth of material.  In a typical 75-minute lecture, I tend to cover 4–5 pages of material&mdash;a bit more if I'm lecturing to graduate students than to undergraduates.  I realize this makes the description "lecture notes" rather inaccurate.
+
+<p><b>Am I writing a textbook?</b>
+No.  All textbooks suck.  (That's partly due to the <strike>rapacious</strike> <strike>unethical</strike> profitable business practices of (most) textbook publishers.  But also, I've <em>never</em> seen a textbook on <em>any</em> topic that I've been willing to teach from for more than a few weeks; that's why I wrote these notes in the first place.)  Besides, have you ever talked to someone who's actually written a textbook?  Do you realize how much <em>work</em> is involved?!  No way, man.  Not for me.  At some point, I may realize (or admit to myself) that these notes already suck enough to be a textbook, at which point I may slap a cover on them and sell some cheap dead-tree copies.  But they'll <em>always</em> be freely available here.
+</blockquote>
+
+<p>
+<table width=50% bgcolor=lightyellow align=right cellspacing=5>
+<tr><td align=left><font face=verdana,sans size=-1>
+<i>No doubt this statement will be followed by an annotated list of all textbooks, and why each one is crap.</i></font>
+<tr><td align=right><font face=verdana,sans size=-1> 
+&mdash; <a href="http://www.metafilter.com/user/21045">Adam Contini</a>, <a href="http://www.metafilter.com/88009/Then-I-see-how-they-treat-Ronald-Reaganhe-needs-to-get-credit-for-saving-the-world-from-communism-and-for-the-good-economy-over-the-last-twenty-years-because-he-lowered-taxes#2888061">MetaFilter</a>, January 4, 2010
+</font></td></tr></table>
+
+<br clear=all>
+
+<hr>
+
+</blockquote>
+
+<div align=right><address><small><a href="http://www.cs.uiuc.edu/~jeffe">Jeff Erickson</a> &mdash; 28 Dec 2013</small></address></div>
+
+
+</body>
+</html>

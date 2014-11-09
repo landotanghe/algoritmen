@@ -1,0 +1,146 @@
+//k = aantal kinderen
+//m = max aantal kinderen
+
+ZOEKEN
+
+bool Boom::zoek(S,blok_pad &, index, huidig_knoop &){
+	blok_pad.push(wortel_blok); 
+	huidig_knoop(wortel);
+	int i = 0;
+	while(i<huidig_knoop.k && S > huidig_knoop.sleutels[i]){//stopt bij de sleutel die ofwel gelijk is of net iets groter dan de gezochte sleutel
+		i++;	
+	}	
+	//index_pad.push(i);
+	
+	while(!huidig_knoop.isBlad && !(i<huidig_knoop.k && S == huidig_knoop.sleutels[i]) ){//we kunnen nog verder dalen && sleutel zit niet in huidige knoop
+		blok = schijf.lees(huidig_knoop,blok_pad.top());
+		blok_pad.push (blok);
+		i=0;
+		while(i<huidig_knoop.k && S > huidig_knoop.sleutels[i]){//stopt bij de sleutel die ofwel gelijk is of net iets groter dan de gezochte sleutel
+			i++;	
+		}
+		//index_pad.push(i);		
+	}
+	index = i;
+	return i<k && S == sleutels[i];
+}
+
+bool Boom::voegToe(S,D){
+	blok_pad;
+	index_pad;
+	huidig_knoop;
+	
+	if(zoek(S,blok_pad,index_pad,huidig_knoop)){
+		return false;//sleutel al aanwezig en moet uniek zijn
+	}else{
+		
+		bool omhoog = huidig_knoop.voegToe(S,D,blok));//blok heeft hier als invoerparameter geen betekenis want we zitten in een blad
+			
+		while( blok_pad.size()>1 && omhoog){//tenminste wortel en zijn kind in stack
+			//broer aanmaken (indices niet over nagedacht)
+			broer = new Knoop();
+			broer.isBlad = huidig_knoop.isBlad;
+			huidig_knoop.k = m/2;
+			for(int i=0;i<m/2;i++){
+				broer.sleutels[i] = huidig_knoop.sleutels[i+m/2+1];
+				broer.data[i] = huidig_knoop.data[i+m/2+1];
+				broer.kinderen[i] = huidig_knoop.kinderen[i+m/2+1];
+			}
+			broer.kinderen[m/2] = huidig_knoop.kinderen[m+1];
+			
+			//wegschrijven van de 2 broertjes
+			schijf.herschrijf(huidig_knoop,blok_pad.pop());//bovenste blok op pad verwijst nu naar de ouder
+			blok = schijf.schrijf(broer);
+			
+			//hogere knoop inlezen
+			schijf.lees(huidig_knoop,blok_pad.top());
+			bool omhoog = huidig_knoop.voegToe(S,D,blok));//nieuwe broer wordt toegevoegd aan de ouder
+		}
+		
+		if(omhoog){
+			//nieuwe wortel maken en daaraan vorige wortel en zijn nieuwe broer toevoegen
+			nieuw = new Knoop();
+			nieuw.sleutels[0]=S;
+			nieuw.data[0]=D;
+			nieuw.kinderen[0]=blok;
+			
+			//broer aanmaken
+			broer = new Knoop();
+			broer.isBlad = huidig_knoop.isBlad;
+			huidig_knoop.k = m/2;
+			for(int i=0;i<m/2;i++){
+				broer.sleutels[i] = huidig_knoop.sleutels[i+m/2+1];
+			}
+			
+			//wegschrijven van de 2 broertjes
+			schijf.herschrijf(huidig_knoop,blok_pad.pop());//oude wortel herschrijven==>stack wordt leeg
+			nieuw.kinderen[1]= schijf.schrijf(broer);
+			
+			//nieuwe wortel in orde brengen
+			wortel_blok = schijf.schrijf(nieuw);
+			wortel = nieuw;
+		}else{
+			//huidig_knoop nog wegschrijven
+			schijf.herschrijf(huidig_knoop,blok);
+		}
+		return true
+	}
+	
+}
+
+bool Knoop::voegToe(S&, D&, blok&){
+	//probeert toe te voegen, als er niet genoeg plaats is,wordt de mediaan in uitvoer-parameters 'teruggespuugd'
+	//returnt TRUE als het toegevoegd werd zonder dat een element werd 'teruggespuugd'
+	
+	
+	k++;
+	if(k>m){
+		int i=k-1;//laatste geldige kind_index (dat nu nog niets geldig bevat)
+		sleutels[i-1]=S;
+		data[i-1]=D;
+		kinderen[i]=blok;
+		while(i>0 && S > sleutels[i-2]){
+			sleutels[i-1] = sleutels[i-2];
+			data[i-1] = data[i-2];
+			kinderen[i] = kinderen[i-1];
+			i++;
+		}
+		sleutels[i-1] = S;
+		data[i-1] = D;
+		kinderen[i] = blok;
+		return true;
+	}else{
+		int med = m/2;
+		return false;
+		SHulp = S;
+		DHulp = D;
+		blokHulp = blok;	
+		//;.....
+	}
+}
+
+
+//recursie zoals hieronder gaat niet want er mogen maar 3 knopen tegelijk ingeladen zijn, 4 niveau's van recursie zou een probleem geven
+bool Knoop::zoek(S,const schijf&, blok&, index&, intern_knoop &){
+	//S 	gezochte sleutel
+	//schijf waarvan gelezen en waarop moet geschreven worden,nodig want enkel boom kent die rechtstreeks
+	//blok	index op schijf waar knoop staat
+	//index index binnen de knoop
+	//intern_knoop	knoop die momenteel is ingeladen
+	int i=0;
+	while(i<k && S > sleutels[i]){//stopt bij de sleutel die ofwel gelijk is of net iets groter dan de gezochte sleutel
+		i++;	
+	}	
+	if(i<k && S == sleutels[i]){
+		index = i;
+		return true;	//gevonden
+	}else if(isBlad){
+		index = i;
+		return false;	//niet gevonden: blok + index wijst naar voorloper
+	}else{
+		//verderzoeken
+		blok = kinderen[i];
+		intern_knoop
+	}
+	
+}
