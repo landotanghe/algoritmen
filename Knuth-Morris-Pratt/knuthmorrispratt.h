@@ -23,12 +23,13 @@ class KnuthMorrisPratt{
 		void calculateIndices();
 };
 
-KnuthMorrisPratt::KnuthMorrisPratt(const uchar* needle,uint _needleSize){
-	for(int i=0;i<_needleSize;i++){
+KnuthMorrisPratt::KnuthMorrisPratt(const uchar* needle,uint _needleSize):p(_needleSize){
+	cout << "read needle= '";
+	for(int i=0;i<p;i++){
 		P.push_back(needle[i]);	
 		cout << needle[i];
 	}
-	cout << endl << "needle read" << endl;
+	cout << "'" << endl;
 	calculatePrefixes();
 	calculateIndices();
 	cout << "completed construction" << endl;
@@ -41,7 +42,7 @@ void KnuthMorrisPratt::search(std::queue<uint>& locations,
 		if(P[i]==T[j]){
 			i++;
 			if(i==p){
-				locations.push(j-p);
+				locations.push(j-p+1);
 				i=indices[i];
 			}
 		}else{
@@ -62,14 +63,14 @@ void KnuthMorrisPratt::calculatePrefixes(){
 		}
 		prefixValues.push_back(currentPrefix+1);//prefixwaarde van i+1, max. waarde q(i+1) is i+1 en wordt bereikt als while niet doorlopen is
 	}
-	cout << "prefixes" << endl;
+	cout << "prefixes:" << endl;
 	for(int i=0;i<p;i++){
-		cout << P[i] << "\t" << endl;
+		cout << P[i] << ",\t" << endl;
 	}
 	for(int i=0;i<p+1;i++){
-		cout << prefixValues[i] << "\t" << endl;
+		cout << prefixValues[i] << ",\t" << endl;
 	}
-	cout << "prefixes calculated" << endl;
+	cout << "prefixes calculated" << endl << endl;
 }
 
 void KnuthMorrisPratt::calculateIndices(){
@@ -100,14 +101,14 @@ void KnuthMorrisPratt::calculateIndices(){
 			indices.push_back(q);
 		}		
 	}
-	cout << "indices" << endl;
+	cout << "indices:" << endl;
 	for(int i=0;i<p;i++){
 		cout << P[i] << "\t" << endl;
 	}
 	for(int i=0;i<p+1;i++){
 		cout << indices[i] << "\t" << endl;
 	}
-	cout << "indices calculated" << endl;
+	cout << "indices calculated" << endl << endl;
 };
 
     
