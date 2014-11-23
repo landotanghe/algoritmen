@@ -1,0 +1,7 @@
+Implementeer Knuth-Morris-Pratt. Bij deze methode moet er veel werk verzet worden voor het eigenlijke zoeken kan beginnen. Vandaar dat dit gebeurt in de constructor. Dit is efficiënt als je dezelfde naald verschillende keren moet zoeken. De hoofding vind je in knuthmorrispratt.h. Je ziet dat de zoekoperatie een queue teruggeeft met plaatsen: je gebruikt de methode meestal om alle plaatsen waar de naald voorkomt op te zoeken. Meestal worden die plaatsen daarna in volgorde verwerkt. Dus gebruik je een Queue en geen gewone Lijst.
+
+Als je een karakterstring meegeeft moet je ook de lengte opgeven. Op deze manier is het nulkarakter geen speciaal karakter meer. Je kan dus rustig een string als ``a\000bc'' opgeven (`\000' is het nulkarakter).
+
+Schrijf een programma dat een string vraagt aan de gebruiker, en dat weergeeft hoe vaak het in de bijbel voorkomt.
+
+We gebruiken unsigned char en niet char. Maakt dit eigenlijk een verschil bij KMP?
