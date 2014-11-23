@@ -17,7 +17,7 @@ class KnuthMorrisPratt{
 		uint p;  //needleSize
 		
 		vector<int> prefixValues;
-		vector<uint> indices;
+		vector<int> indices;
 		      
 		void calculatePrefixes();
 		void calculateIndices();
@@ -57,7 +57,7 @@ void KnuthMorrisPratt::calculatePrefixes(){
 	prefixValues.push_back(0);//prefixfunctie(-1) altijd 0
 	
 	for(int i=1;i<p;i++){//prefixfunctie van 2 t.e.m. p berekenen (dus aan de hand van die voor 1 t.e.m. p-1)
-		uint currentPrefix = prefixValues[i];
+		int currentPrefix = prefixValues[i];
 		while(currentPrefix>-1 && P[i]!=P[currentPrefix]){
 			currentPrefix=prefixValues[currentPrefix];//prefixwaarde daalt, we zoeken links verder
 		}
@@ -65,11 +65,11 @@ void KnuthMorrisPratt::calculatePrefixes(){
 	}
 	cout << "prefixes:" << endl;
 	for(int i=0;i<p;i++){
-		cout << P[i] << ",\t";
+		cout << P[i] << "\t";
 	}
 	cout << endl;
 	for(int i=0;i<p+1;i++){
-		cout << prefixValues[i] << ",\t";
+		cout << prefixValues[i] << "\t";
 	}
 	cout << endl;
 	cout << "prefixes calculated" << endl << endl;
@@ -105,11 +105,11 @@ void KnuthMorrisPratt::calculateIndices(){
 	}
 	cout << "indices:" << endl;
 	for(int i=0;i<p;i++){
-		cout << P[i] << ",\t";
+		cout << P[i] << "\t";
 	}
 	cout << endl;
 	for(int i=0;i<p+1;i++){
-		cout << indices[i] << ",\t";
+		cout << indices[i] << "\t";
 	}
 	cout << endl;
 	cout << "indices calculated" << endl << endl;
