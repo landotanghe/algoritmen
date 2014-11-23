@@ -21,13 +21,13 @@ int main(){
 	
 	//voorbeeld 2
 	
-	uchar needle[] = {'j','e','z','u'};
+	uchar needle[] = {'a','b','b','a'};
 	uint needleSize = 4;
-	ifstream in("bijbel.txt");
+	ifstream in("mytest.txt");
 	string contents((istreambuf_iterator<char>(in)), istreambuf_iterator<char>());
 	//cout << contents;
 	const uchar *haystack =(uchar*) contents.c_str();
-	uint haystackSize = contents.size()-1;
+	uint haystackSize = contents.size();
 	in.close();
 	
 	KnuthMorrisPratt kmp(needle,needleSize);
