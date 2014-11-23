@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <queue>
+#include <string>
 
 using namespace std;
 
@@ -9,21 +10,28 @@ typedef unsigned int uint;
 typedef unsigned char uchar;
 
 int main(){
-	uchar needle[] = {'t','h','i','s'};
-	uint needleSize = 4;
-	uchar haystack[100000] =  {'t','h','i','s','i','t','h','i','s','a'}; 
-	uint haystackSize = 10;
-	cout << "inited" << endl;
-	/*
-	ifstream hayFile;
-	hayFile.open("bijbel.txt");
 	
-	hayFile.close();
+	// voorbeeld 1
+	uchar needle[] = {'t','h','i','s',' ','i','s',' ','i','s','i','s'}; 
+	uint needleSize = 12;							     //match here																    //and here
+	uchar haystack[] =  {'h','i','t','h','t','h','i',    't','h','i','s',' ','i','s',' ','i','s','i','s','s','i','t','h','i','s','a',   't','h','i','s',' ','i','s',' ','i','s','i','s',   't','a','i','s','i','x',' ','i','s','i','s'}; 
+	uint haystackSize = 35;
+	
+	
+	//voorbeeld 2
+	/*
+	uchar needle[] = {'j','e','z','u'};
+	uint needleSize = 4;
+	ifstream in("bijbel.txt");
+	string contents((istreambuf_iterator<char>(in)), istreambuf_iterator<char>());
+	cout << contents;
+	const uchar *haystack =(uchar*) contents.c_str();
+	uint haystackSize = contents.size()-1;
+	in.close();
 	*/
 	KnuthMorrisPratt kmp(needle,needleSize);
 	queue<uint> locations;
 	
-	cout << "constructed" << endl;
 	kmp.search(locations,haystack,haystackSize);
 	
 	cout << "searched" << endl;

@@ -65,11 +65,13 @@ void KnuthMorrisPratt::calculatePrefixes(){
 	}
 	cout << "prefixes:" << endl;
 	for(int i=0;i<p;i++){
-		cout << P[i] << ",\t" << endl;
+		cout << P[i] << ",\t";
 	}
+	cout << endl;
 	for(int i=0;i<p+1;i++){
-		cout << prefixValues[i] << ",\t" << endl;
+		cout << prefixValues[i] << ",\t";
 	}
+	cout << endl;
 	cout << "prefixes calculated" << endl << endl;
 }
 
@@ -103,11 +105,13 @@ void KnuthMorrisPratt::calculateIndices(){
 	}
 	cout << "indices:" << endl;
 	for(int i=0;i<p;i++){
-		cout << P[i] << "\t" << endl;
+		cout << P[i] << ",\t";
 	}
+	cout << endl;
 	for(int i=0;i<p+1;i++){
-		cout << indices[i] << "\t" << endl;
+		cout << indices[i] << ",\t";
 	}
+	cout << endl;
 	cout << "indices calculated" << endl << endl;
 };
 
