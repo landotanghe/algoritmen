@@ -26,9 +26,12 @@ class KnuthMorrisPratt{
 KnuthMorrisPratt::KnuthMorrisPratt(const uchar* needle,uint _needleSize){
 	for(int i=0;i<_needleSize;i++){
 		P.push_back(needle[i]);	
+		cout << needle[i];
 	}
+	cout << endl << "needle read" << endl;
 	calculatePrefixes();
 	calculateIndices();
+	cout << "completed construction" << endl;
 }
 
 void KnuthMorrisPratt::search(std::queue<uint>& locations,
@@ -64,8 +67,9 @@ void KnuthMorrisPratt::calculatePrefixes(){
 		cout << P[i] << "\t" << endl;
 	}
 	for(int i=0;i<p+1;i++){
-		cout << prefixes[i] << "\t" << endl;
+		cout << prefixValues[i] << "\t" << endl;
 	}
+	cout << "prefixes calculated" << endl;
 }
 
 void KnuthMorrisPratt::calculateIndices(){
@@ -103,6 +107,7 @@ void KnuthMorrisPratt::calculateIndices(){
 	for(int i=0;i<p+1;i++){
 		cout << indices[i] << "\t" << endl;
 	}
+	cout << "indices calculated" << endl;
 };
 
     
