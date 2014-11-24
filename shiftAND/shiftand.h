@@ -10,7 +10,7 @@ public:
     void zoek(std::queue<const uchar*>& plaats,
                      const uchar* hooiberg, uint hooiberglengte);
 private:
-    Bitpatroon naald[256];
+    Bitpatroon letterpatroon[256];
     uint naaldlengte;
        
     
@@ -19,9 +19,7 @@ private:
 Shiftand::Shiftand(const uchar* _naald,uint _naaldlengte):
 naaldlengte(_naaldlengte)
 {
-    if(naaldlengte>256){
-        naaldlengte=256;
-    }
+ 
     for(int i=0;i<naaldlengte;i++){
         naald[i]=_naald[i];
     }
