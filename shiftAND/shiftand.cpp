@@ -24,11 +24,10 @@ int main(){
 	
 	sa.zoek(locations,haystack,haystackSize);
 	
-	cout << "searched" << endl;
-	cout << "needle address: " << &needle << endl; 
+	cout << "searched: " << needle << endl;
 	while(!locations.empty()){
-		int begin = locations.front() - needle;//verschil tussen de pointers
-		cout << locations.front() << endl;
+		int begin = locations.front() - haystack;//verschil tussen de pointers
+		cout << begin << endl;
 		locations.pop();
 	}
     return 0;   

@@ -40,15 +40,20 @@ public:
     const Bitpatroon shiftrechts(uint verplaatsing) const{
         return Bitpatroon(bits>>verplaatsing);
     }
-//niet beveiligd: u moet kleiner dan patroonlengte zijn.
-    static Bitpatroon eenbit(uint u){
-        return Bitpatroon(uint(1)<<(patroonlengte-1-u));
-    }
     friend ostream& operator<<(ostream& os, const Bitpatroon& b){
       for (int i=0;i<patroonlengte;i++){
           os<<b.en(eenbit(i));
       }
         return os;
+    }
+    void setBit(uint u){
+        *this |= eenbit(u);
+    }
+    
+private:
+//niet beveiligd: u moet kleiner dan patroonlengte zijn.
+    static Bitpatroon eenbit(uint u){
+        return Bitpatroon(uint(1)<<(patroonlengte-1-u));
     }
 };
 #endif
