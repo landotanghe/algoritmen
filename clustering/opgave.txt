@@ -1,0 +1,28 @@
+OEFENINGEN: Verzen
+
+OEFENINGEN bij ALGORITMEN en GEGEVENSSTRUCTUREN
+
+Niet dat we zo katholiek zijn, maar de bijbel is een interessante bron van data. Dit keer zijn we geïnteresseerd in verzen die gelijkaardig zijn, dat wil zeggen veel gelijke woorden bevatten. Men kan een afstandsfunctie (of "metriek") bedenken die aangeeft hoe "ver" een bepaald vers van een ander vers verwijderd is; hoe sterker twee verzen op mekaar op mekaar gelijken, hoe kleiner hun onderlinge afstand.
+
+Gegeven zo'n metriek kan men de verzen indelen in gelijkaardige groepen of clusters, zodat de spreiding ("spacing") maximaal is, d.w.z. de kleinste afstand tussen twee verzen die niet in dezelfde cluster zitten moet zo groot mogelijk zijn.
+
+Opdracht: verdeel de bijbel (of bv. enkel Genesis) in 100 clusters.
+
+Een interessante metriek is de volgende: de afstand tussen twee verzen is het natuurlijk logaritme van het gemiddeld aantal woorden in beide verzen gedeeld door het aantal gemeenschappelijke woorden:
+
+ 
+        d(a,b) = log( (#a + #b)/(2 #ab) )
+Hierbij schrappen we alle leestekens en zetten alle letters om in kleine letters. Indien een bepaald woord meerdere keren in beide verzen voorkomt, dan telt het ook zoveel keer mee! Opgelet: indien er geen gemeenschappelijke woorden voorkomen, dan is de afstand oneindig.
+Vergewis jezelf ervan dat d(a,a) = 0 en d(a,b)=d(b,a)
+
+Een voorbeeld:
+
+Ge1:1 In the beginning God created the heaven and the earth. (10 woorden)
+Ge1:17 And God set them in the firmament of the heaven to give light upon the earth, (16 woorden)
+gemeenschappelijk: god, the, the, the, heaven, earth, and, in
+afstand: log((10+16)/(2*8))= log 1.625
+Opmerkingen:
+
+Zoals altijd: maak eerst een "plan", en concentreer je vooral op de meest kritische (=risicovolle) stukken.
+Zorg ervoor dat je een andere afstandsfunctie kunt invoeren met minimale aanpassingen in het programma.
+"Make it work first, then make it work fast"
