@@ -1,0 +1,5 @@
+Gegeven een reguliere uitdrukking R, met de drie basisoperaties concatenatie, of en de Kleenesluiting. Schrijf een programma dat een html-bestand genereert waarin de grammatica van de formele taal Taal(R) terug te vinden is.
+
+Voorbeeld: voor de regexp "(x)((a)|(c))(d)" komt er het bestand grammatica.html.
+
+Je kan gebruik maken van de klasse symbool om de niet-terminale symbolen aan te maken. De klasse regexp definieert reguliere expressies.
