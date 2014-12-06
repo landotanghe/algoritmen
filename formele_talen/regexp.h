@@ -47,7 +47,7 @@ enum opcode {ster,of,plus,letter};
     opcode geefOpcode() const;                           
     const Regexp* geefEersteOperand() const;//zinloos als opcode letter is.
     const Regexp* geefTweedeOperand() const;//zinloos als opcode letter of ster is.
-    uchar  geefLetter() const;//zinloos als opcode niet letter is.
+    uchar geefLetter() const;//zinloos als opcode niet letter is.
     ~Regexp();                                              
     friend ostream& operator<<(ostream& os, const Regexp& re);                                                 
 private:
