@@ -8,7 +8,7 @@ const uchar epsilon=0;
 class ZoekNA;
 //ThompsonNA: met een begintoestand (index 0)
 //en een eindtoestand (index aantalToestanden-1)
-//Alleen gebruikt om algoritme ven Thompson te implementeren
+//Alleen gebruikt om algoritme van Thompson te implementeren
 
 class ThompsonNA{
 //friend class ZoekNA;
@@ -16,17 +16,17 @@ public:
     ThompsonNA(const Regexp& re);
     void schrijf(ostream& os);
     class Verbinding{
-    friend class ThompsonNA;
-    public:
-        Verbinding(int _bron,int _doel,uchar _a);                             ;
-        int geefBron() const;
-        int geefDoel() const;
-        int geefKarakter() const;
-    private:
-        int bron;
-        int doel;
-        uchar a;
-    };
+    	friend class ThompsonNA;
+	    public:
+	        Verbinding(int _bron,int _doel,uchar _a);                             ;
+	        int geefBron() const;
+	        int geefDoel() const;
+	        int geefKarakter() const;
+	    private:
+	        int bron;
+	        int doel;
+	        uchar a;
+	};
     int geefAantalVerbindingen();
     int geefAantalToestanden();
     const Verbinding& operator[](int i) const;
