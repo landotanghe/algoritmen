@@ -5,6 +5,8 @@
 #include <stack>
 #include <set>
 using std::vector;
+using std::set;
+using std::stack;
 const uchar epsilon=0;
 class ZoekNA;
 //ThompsonNA: met een begintoestand (index 0)
@@ -39,42 +41,49 @@ protected:
     int aantalToestanden;
     vector<Verbinding> overgang;
     
-    vector<int> epsilonSluiting(vector<int> statenbits);
+    set<int> epsilonSluiting(set<int> statenbits);
+    set<int> overgangsfunctie(set<int> statenbits,uchar symbool);
 };
 
 
-bool ThomsonNA::bevat(string lijn){
+bool ThompsonNA::bevat(string lijn){
     set<int> statenbits;
-    statenbits.insert(geefBron());
+    statenbits.insert(0);
     for(int i=0;i<lijn.size();i++){
-        char a=lijn[i];
-        vector<int> nieuwe_statenbits;
-        
-        
+        uchar a=lijn[i];
+        set<int> statenbits = epsilonSluiting(overgangsfunctie(statenbits,a));
+        if(statenbits.count(geefAantalToestanden()-1)==1){
+            return true;
+        }        
     }
+    return false;
 }
 
-set<int> epsilonSluiting(set<int> statenbits){
+set<int> ThompsonNA::epsilonSluiting(set<int> statenbits){
+    return overgangsfunctie(statenbits,epsilon);
+}
+
+set<int> ThompsonNA::overgangsfunctie(set<int> statenbits,uchar symbool){
     set<int> sluiting;
     stack<int> st;
-    for(set<int>::iterator statenbits.begin();it!=statenbits.end();it++){
+    for(set<int>::iterator it=statenbits.begin();it!=statenbits.end();it++){
         sluiting.insert(*it);    
     }
     while(!st.empty()){
-        int bron = st.pop();
+        int bron = st.top();
+        st.pop();
         sluiting.insert(bron);
         for(int i=0;i<geefAantalVerbindingen();i++){
             if(overgang[i].geefBron()==bron){
-                if(overgang[i].geefKarakter()==epsilon){
-                    naar=overgang[i].geefDoel();
-                    if(st.count(naar)==0){
+                if(overgang[i].geefKarakter()==symbool){
+                    int naar=overgang[i].geefDoel();
+                    if(sluiting.count(naar)==0){
                         st.push(naar);
                     }
                 }
             }
         }    
-    }
-        
+    }     
 }
 
 ThompsonNA::Verbinding::Verbinding(int _bron,int _doel,uchar _a):bron(_bron),doel(_doel),a(_a){}

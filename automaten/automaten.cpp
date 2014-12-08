@@ -9,11 +9,13 @@ int main(){
 	ThompsonNA na(r);
 	na.schrijf(cout);
 	
-	string tekst[4]={"abba is in de ab geweest", "niets te zien", "bevat a en b", "geen","a","b"};
-	for(int i=0;i<4;i++){
+	string tekst[6]={"abba is in de ab geweest", "niets te zien", "bevat a en b", "geen","a","b"};
+	for(int i=0;i<6;i++){
         cout << endl << endl;
         cout << tekst[i] << endl;
-        cout << (na.bevat(tekst[i]) << endl;
+        if(na.bevat(tekst[i])){
+            cout << "found"  << endl;
+        }
     }		
 	cin.get();
 	return 0;
