@@ -2,6 +2,7 @@
 #define __THOMPSONNA_H
 #include "regexp.h"
 #include <vector>
+#include <stack>
 #include <set>
 using std::vector;
 const uchar epsilon=0;
@@ -27,6 +28,7 @@ public:
 	        int doel;
 	        uchar a;
 	};
+	bool bevat(string lijn);
     int geefAantalVerbindingen();
     int geefAantalToestanden();
     const Verbinding& operator[](int i) const;
@@ -36,8 +38,44 @@ protected:
     void verbind(int bron, int doel, uchar c);
     int aantalToestanden;
     vector<Verbinding> overgang;
+    
+    vector<int> epsilonSluiting(vector<int> statenbits);
 };
 
+
+bool ThomsonNA::bevat(string lijn){
+    set<int> statenbits;
+    statenbits.insert(geefBron());
+    for(int i=0;i<lijn.size();i++){
+        char a=lijn[i];
+        vector<int> nieuwe_statenbits;
+        
+        
+    }
+}
+
+set<int> epsilonSluiting(set<int> statenbits){
+    set<int> sluiting;
+    stack<int> st;
+    for(set<int>::iterator statenbits.begin();it!=statenbits.end();it++){
+        sluiting.insert(*it);    
+    }
+    while(!st.empty()){
+        int bron = st.pop();
+        sluiting.insert(bron);
+        for(int i=0;i<geefAantalVerbindingen();i++){
+            if(overgang[i].geefBron()==bron){
+                if(overgang[i].geefKarakter()==epsilon){
+                    naar=overgang[i].geefDoel();
+                    if(st.count(naar)==0){
+                        st.push(naar);
+                    }
+                }
+            }
+        }    
+    }
+        
+}
 
 ThompsonNA::Verbinding::Verbinding(int _bron,int _doel,uchar _a):bron(_bron),doel(_doel),a(_a){}
 
